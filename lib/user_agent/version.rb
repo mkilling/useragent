@@ -34,7 +34,7 @@ class UserAgent
     end
 
     def eql?(other)
-      other.is_a?(self.class) && to_s == other.to_s
+      other.is_a?(self.class) && (self <=> other) == 0
     end
 
     def ==(other)

@@ -409,6 +409,22 @@ describe UserAgent::Version do
     UserAgent::Version.new("0.9").should_not >= UserAgent::Version.new("1.0")
   end
 
+  it "should be eql if one version has more zeroes than the other" do
+    UserAgent::Version.new("5.1.0").should eql(UserAgent::Version.new("5.1"))
+  end
+
+  it "should be == if one version has more zeroes than the other" do
+    UserAgent::Version.new("5.0.0").should == "5.0"
+  end
+
+  it "should be >= if one version has more zeroes than the other" do
+    UserAgent::Version.new("5.0.0").should >= UserAgent::Version.new("5.0")
+  end
+
+  it "should be <= if one version has more zeroes than the other" do
+    UserAgent::Version.new("5.0.0").should <= UserAgent::Version.new("5.0")
+  end
+
   it "should not be > if version is invalid" do
     UserAgent::Version.new("x.x").should_not > UserAgent::Version.new("1.0")
   end
